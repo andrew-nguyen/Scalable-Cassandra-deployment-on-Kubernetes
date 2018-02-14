@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: cassandra
-          image: cassandra:3.0
+          image: cassandra:3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 7000
