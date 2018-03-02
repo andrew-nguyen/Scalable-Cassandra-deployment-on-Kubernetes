@@ -40,15 +40,18 @@ spec:
             - name: CASSANDRA_ENDPOINT_SNITCH
               value: GossipingPropertyFileSnitch
           volumeMounts:
-            - name: cassandra-data
+            - name: pv
               mountPath: /var/lib/cassandra/data
   volumeClaimTemplates:
     - metadata:
-        name: cassandra-data
+        name: pv
       spec:
         accessModes:
           - ReadWriteOnce
         storageClassName: "standard"
+        selector:
+          matchLabels:
+            app: "cassandra"
         resources:
           requests:
-            storage: "2Gi"
+            storage: "10Gi"
